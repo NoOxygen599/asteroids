@@ -5,7 +5,7 @@ void mouseReleased() {
   else if (mode == GAMEOVER) gameOverClicks();
   
   
-  if (mode == INTRO && mouseX > 170 && mouseX < 440 && mouseY > 400 && mouseY < 480) {
+  if (mode == INTRO && mouseX > width/2 && mouseX < width/2 + 270 && mouseY > 380 && mouseY < 480) {
       mode = GAME;
   }
 }
