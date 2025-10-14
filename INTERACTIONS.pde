@@ -3,6 +3,11 @@ void mouseReleased() {
   else if (mode == GAME) gameClicks();
   else if (mode == PAUSE) pauseClicks();
   else if (mode == GAMEOVER) gameOverClicks();
+  
+  
+  if (mode == INTRO && mouseX > 170 && mouseX < 440 && mouseY > 400 && mouseY < 480) {
+      mode = GAME;
+  }
 }
 
 void keyPressed() {
