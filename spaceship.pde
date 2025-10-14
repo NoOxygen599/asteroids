@@ -41,18 +41,18 @@ class Spaceship{
     loc. add(vel);
     if (upkey){
       vel.add(dir);
-      if (vel.x > MAXSPEED)  vel.x =  MAXSPEED; 
+      //if (vel.x > MAXSPEED)  vel.x =  MAXSPEED; 
       if (vel.x < -MAXSPEED) vel.x = -MAXSPEED;
       if (vel.y > MAXSPEED)  vel.y =  MAXSPEED;
       if (vel.y < -MAXSPEED) vel.y = -MAXSPEED;
     }
-    if (leftkey) dir.rotate(-radians(3));
-    if (rightkey) dir.rotate(radians(3));
+    if (leftkey) dir.rotate(-radians(5));
+    if (rightkey) dir.rotate(radians(5));
     //print(vel + "\n"); 
 
   }
   void shoot() {
-    
+    if (spacekey) bullets.add(new Bullet() );
   }
   void checkForCollisions() {
     if (loc.x < -20) loc.x = width + 20; 

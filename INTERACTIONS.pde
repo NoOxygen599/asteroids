@@ -5,7 +5,7 @@ void mouseReleased() {
   else if (mode == GAMEOVER) gameOverClicks();
   
   
-  if (mode == INTRO && mouseX > width/2 && mouseX < width/2 + 270 && mouseY > 380 && mouseY < 480) {
+  if (mode == INTRO && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > 350 && mouseY < 450) {
       mode = GAME;
   }
 }
@@ -15,6 +15,7 @@ void keyPressed() {
   if (keyCode == DOWN) downkey = true;
   if (keyCode == LEFT) leftkey = true;
   if (keyCode == RIGHT) rightkey = true;
+  if (keyCode == ' ') spacekey = true;
 }
 
 
@@ -23,4 +24,5 @@ void keyReleased() {
   if (keyCode == DOWN) downkey = false;
   if (keyCode == LEFT) leftkey = false;
   if (keyCode == RIGHT) rightkey = false;
+  if (keyCode == ' ') spacekey = false;
 }

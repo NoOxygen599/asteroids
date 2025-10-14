@@ -1,3 +1,7 @@
+import java.util.ArrayList; 
+
+
+
 //ASTROIDS
 
 
@@ -14,11 +18,15 @@ final int GAMEOVER = 3;
 int mode = INTRO;
 
 //keys
-boolean upkey, downkey, leftkey, rightkey;
+boolean upkey, downkey, leftkey, rightkey, spacekey;
 
 
 //Game Objects
 Spaceship player1;
+
+//List of Bullets
+ArrayList<Bullet> bullets;
+
 
 
 //pvectors
@@ -32,7 +40,10 @@ void setup() {
   size (800, 600);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
+  bullets = new ArrayList();
+  
   player1 = new Spaceship();
+ 
   
   loc = new PVector(width/2, height/2);
   vel = new PVector(random(-1,1), random(-1,1));
