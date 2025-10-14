@@ -4,6 +4,7 @@ class Spaceship{
   PVector loc; 
   PVector vel; 
   PVector dir; //direction
+  final int MAXSPEED = 15;
   
   
   //constructor
@@ -38,10 +39,17 @@ class Spaceship{
 
   void move() {
     loc. add(vel);
-    if (upkey) vel.add(dir);
+    if (upkey){
+      vel.add(dir);
+      if (vel.x > MAXSPEED)  vel.x =  MAXSPEED; 
+      if (vel.x < -MAXSPEED) vel.x = -MAXSPEED;
+      if (vel.y > MAXSPEED)  vel.y =  MAXSPEED;
+      if (vel.y < -MAXSPEED) vel.y = -MAXSPEED;
+    }
     if (leftkey) dir.rotate(-radians(3));
     if (rightkey) dir.rotate(radians(3));
-    
+    //print(vel + "\n"); 
+
   }
   void shoot() {
     
