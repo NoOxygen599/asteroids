@@ -25,7 +25,7 @@ boolean upkey, downkey, leftkey, rightkey, spacekey;
 Spaceship player1;
 
 //List of Bullets
-ArrayList<Bullet> bullets;
+ArrayList<GameObject> objects;
 
 
 
@@ -40,10 +40,9 @@ void setup() {
   size (800, 600);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
-  bullets = new ArrayList();
-  
+  objects = new ArrayList();
   player1 = new Spaceship();
- 
+ objects.add(player1);
   
   loc = new PVector(width/2, height/2);
   vel = new PVector(random(-1,1), random(-1,1));

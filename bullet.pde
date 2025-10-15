@@ -1,12 +1,11 @@
-class Bullet {
+class Bullet extends GameObject{
   
-  PVector loc;
-  PVector vel;
+  //PVector loc;
+  //PVector vel;
   //int lives;
   
   Bullet() {
-    loc = new PVector(player1.loc.x, player1.loc.y);
-    vel = player1.dir.copy();
+    super(player1.loc.copy(), player1.dir.copy());
     vel.setMag(10);
   }
     void show() {
@@ -20,7 +19,12 @@ class Bullet {
       loc.add(vel);
     }
     
+    void wall() {
+      if (loc.x < -5) loc.x = width + 5; 
+    if (loc.x > width +5) loc.x = -5; 
+    if (loc.y < -5) loc.y = height + 5;
+    if (loc.y > height +5) loc.y = -5; 
+    }
     
     
-    
-}
+}       

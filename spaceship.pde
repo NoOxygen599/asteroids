@@ -1,16 +1,15 @@
-class Spaceship{
+class Spaceship extends GameObject{
   
   // instance variables
-  PVector loc; 
-  PVector vel; 
+ // PVector loc; 
+ // PVector vel; 
   PVector dir; //direction
   final int MAXSPEED = 15;
   
   
   //constructor
   Spaceship() {
-    loc = new PVector(width/2, height/2);
-    vel = new PVector(0, 0);
+    super(width/2, height/2, 0 ,0);
     dir = new PVector(0.1, 0);
   }
   
@@ -41,7 +40,7 @@ class Spaceship{
     loc. add(vel);
     if (upkey){
       vel.add(dir);
-      //if (vel.x > MAXSPEED)  vel.x =  MAXSPEED; 
+      if (vel.x > MAXSPEED)  vel.x =  MAXSPEED; 
       if (vel.x < -MAXSPEED) vel.x = -MAXSPEED;
       if (vel.y > MAXSPEED)  vel.y =  MAXSPEED;
       if (vel.y < -MAXSPEED) vel.y = -MAXSPEED;
@@ -52,7 +51,7 @@ class Spaceship{
 
   }
   void shoot() {
-    if (spacekey) bullets.add(new Bullet() );
+    if (spacekey) objects.add(new Bullet() );
   }
   void checkForCollisions() {
     if (loc.x < -20) loc.x = width + 20; 
