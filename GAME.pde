@@ -9,7 +9,10 @@ void game() {
     currentObject.act();
     currentObject.show(); 
     currentObject.wall();
-    i++;
+    if (currentObject.lives == 0) 
+      objects.remove(i);
+    else
+      i++;
   }
   //player1.show();
 }

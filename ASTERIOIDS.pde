@@ -51,6 +51,7 @@ void setup() {
 }
 
 void draw() {
+  println(objects.size());
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
   else if (mode == PAUSE) pause();
