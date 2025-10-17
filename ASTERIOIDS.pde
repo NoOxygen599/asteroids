@@ -42,7 +42,12 @@ void setup() {
   rectMode(CENTER);
   objects = new ArrayList();
   player1 = new Spaceship();
- objects.add(player1);
+  objects.add(player1);
+  objects.add(new Asteroid());
+  objects.add(new Asteroid());
+  objects.add(new Asteroid());
+  objects.add(new Asteroid());
+  
   
   loc = new PVector(width/2, height/2);
   vel = new PVector(random(-1,1), random(-1,1));
@@ -51,7 +56,6 @@ void setup() {
 }
 
 void draw() {
-  println(objects.size());
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
   else if (mode == PAUSE) pause();

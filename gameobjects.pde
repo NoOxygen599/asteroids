@@ -32,7 +32,11 @@ class GameObject {
   }
   
   void wall() {
-  
+  if (loc.x < -20) loc.x = width + 20; 
+    if (loc.x > width +20) loc.x = -20; 
+    if (loc.y < -20) loc.y = height + 20;
+    if (loc.y > height +20) loc.y = -20; 
+    
   }
   
 }
