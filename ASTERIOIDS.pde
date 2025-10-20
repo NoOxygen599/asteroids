@@ -18,7 +18,7 @@ final int GAMEOVER = 3;
 int mode = INTRO;
 
 //keys
-boolean upkey, downkey, leftkey, rightkey, spacekey;
+boolean upkey, downkey, leftkey, rightkey, spacekey, zkey;
 
 
 //Game Objects

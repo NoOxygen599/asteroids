@@ -16,6 +16,8 @@ void keyPressed() {
   if (keyCode == LEFT) leftkey = true;
   if (keyCode == RIGHT) rightkey = true;
   if (keyCode == ' ') spacekey = true;
+  if (keyCode == 'z') zkey = true;
+  if (keyCode == 'Z') zkey = true;
 }
 
 
@@ -25,4 +27,7 @@ void keyReleased() {
   if (keyCode == LEFT) leftkey = false;
   if (keyCode == RIGHT) rightkey = false;
   if (keyCode == ' ') spacekey = false;
+  if (keyCode == 'z') zkey = false;
+  if (keyCode == 'Z') zkey = false;
+  
 }

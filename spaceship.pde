@@ -5,7 +5,7 @@ class Spaceship extends GameObject{
  // PVector vel; 
   PVector dir; //direction
   final int MAXSPEED = 15;
-  final float MINSPEED = 0.06;
+  final float MINSPEED = 0.01;
   
   
   //constructor
