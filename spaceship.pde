@@ -5,6 +5,7 @@ class Spaceship extends GameObject{
  // PVector vel; 
   PVector dir; //direction
   final int MAXSPEED = 15;
+  final float MINSPEED = 0.06;
   
   
   //constructor
@@ -39,16 +40,21 @@ class Spaceship extends GameObject{
 
   void move() {
     loc. add(vel);
+     
     if (upkey){
       vel.add(dir);
       if (vel.x > MAXSPEED)  vel.x =  MAXSPEED; 
       if (vel.x < -MAXSPEED) vel.x = -MAXSPEED;
       if (vel.y > MAXSPEED)  vel.y =  MAXSPEED;
       if (vel.y < -MAXSPEED) vel.y = -MAXSPEED;
+    } else {
+      vel.mult(0.985); 
+      if (abs(vel.x) < MINSPEED){  vel.x = 0; vel.y = 0;}; 
+      if (abs(vel.y) < MINSPEED){  vel.y = 0; vel.x = 0;};
     }
     if (leftkey) dir.rotate(-radians(5));
     if (rightkey) dir.rotate(radians(5));
-    //print(vel + "\n"); 
+    print(vel + "\n"); 
 
   }
   void shoot() {
