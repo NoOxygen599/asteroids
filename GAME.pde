@@ -18,5 +18,8 @@ void game() {
 }
 
 void gameClicks() {
+  if(mouseX < width && mouseY < height) {
+    mode = PAUSE;
+  }
   
 }

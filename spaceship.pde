@@ -49,12 +49,12 @@ class Spaceship extends GameObject{
       if (vel.y < -MAXSPEED) vel.y = -MAXSPEED;
     } else {
       vel.mult(0.985); 
-      if (abs(vel.x) < MINSPEED){  vel.x = 0; vel.y = 0;}; 
-      if (abs(vel.y) < MINSPEED){  vel.y = 0; vel.x = 0;};
+      if (abs(vel.x) < MINSPEED){  vel.x = 0;}; 
+      if (abs(vel.y) < MINSPEED){  vel.y = 0;};
     }
     if (leftkey) dir.rotate(-radians(5));
     if (rightkey) dir.rotate(radians(5));
-    print(vel + "\n"); 
+    //print(vel + "\n"); 
 
   }
   void shoot() {
