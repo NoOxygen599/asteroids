@@ -2,7 +2,10 @@ import java.util.ArrayList;
 
 
 
-//ASTROIDS
+//gif
+PImage[] gif;
+int NoF;
+int f;
 
 
 //COLORS
@@ -48,6 +51,16 @@ void setup() {
   objects.add(new Asteroid());
   objects.add(new Asteroid());
   
+  //gif
+   NoF = 41;
+  gif = new PImage[NoF];
+ 
+  int i = 0;
+  while (i < NoF) {
+    gif[i] = loadImage("frame_"+i+"_delay-0.1s.gif");
+    i=i+1;
+  }
+  
   
   loc = new PVector(width/2, height/2);
   vel = new PVector(random(-1,1), random(-1,1));
@@ -58,6 +71,9 @@ void setup() {
 void draw() {
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
-  else if (mode == PAUSE) pause();
+  //else if (mode == PAUSE) pause();
   else if (mode == GAMEOVER) gameOver();
+  if (mode == PAUSE) {
+    pause();
+  }
 }
