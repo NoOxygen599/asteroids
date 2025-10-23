@@ -6,12 +6,13 @@ class Bullet extends GameObject{
     super(player1.loc.copy(), player1.dir.copy());
     vel.setMag(10);
     timer = 120; 
+    d = 5;
   }
     void show() {
       fill(BLACK);
       stroke(WHITE);
       strokeWeight(2);
-      circle(loc.x, loc.y, 5);
+      circle(loc.x, loc.y, d);
     }
     
     void act() {

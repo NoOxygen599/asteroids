@@ -3,6 +3,7 @@ class GameObject {
   PVector loc; //location
   PVector vel; //velocity
   int lives;
+  float d;
   
   GameObject(float lx, float ly, float vx, float vy) {
     loc = new PVector(lx, ly);
