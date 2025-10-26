@@ -8,6 +8,9 @@ void mouseReleased() {
   if (mode == INTRO && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > 350 && mouseY < 450) {
       mode = GAME;
   }
+  if (mode == GAMEOVER && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > 350 && mouseY < 450) {
+      mode = INTRO;
+  }
 }
 
 void keyPressed() {

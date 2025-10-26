@@ -13,12 +13,13 @@ color BLACK = #000000;
 color WHITE = #FFFFFF;
 color RED   = #DD0000;
 
+
 //MODE FRAMEWORK
 final int INTRO    = 0;
 final int GAME     = 1;
 final int PAUSE    = 2;
 final int GAMEOVER = 3;
-int mode = INTRO;
+int mode = GAMEOVER;
 
 //keys
 boolean upkey, downkey, leftkey, rightkey, spacekey, zkey;
@@ -69,6 +70,7 @@ void setup() {
 }
 
 void draw() {
+  print("fc:"+frameCount+"\n");
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
   //else if (mode == PAUSE) pause();

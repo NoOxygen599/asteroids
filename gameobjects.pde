@@ -1,6 +1,6 @@
 class GameObject {
   
-  public PVector loc; //location
+  PVector loc; //location
   PVector vel; //velocity
   int lives;
   float d;

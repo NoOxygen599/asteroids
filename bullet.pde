@@ -5,7 +5,7 @@ class Bullet extends GameObject{
   Bullet() {
     super(player1.loc.copy(), player1.dir.copy());
     vel.setMag(10);
-    timer = 90; 
+    timer = 120; 
     d = 5;
   }
     void show() {
