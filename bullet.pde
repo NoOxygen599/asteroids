@@ -4,7 +4,7 @@ class Bullet extends GameObject{
   
   Bullet() {
     super(player1.loc.copy(), player1.dir.copy());
-    vel.setMag(10);
+    vel.setMag(player1.vel.mag() + 10);
     timer = 120; 
     d = 5;
   }

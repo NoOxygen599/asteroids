@@ -47,16 +47,19 @@ void setup() {
   objects = new ArrayList();
   player1 = new Spaceship();
   objects.add(player1);
-  objects.add(new Asteroid());
-  objects.add(new Asteroid());
-  objects.add(new Asteroid());
-  objects.add(new Asteroid());
+  
+  int i=0;
+  while (i <= 6){
+    objects.add(new Asteroid());
+    i++;
+  }
+  
   
   //gif
    NoF = 41;
   gif = new PImage[NoF];
  
-  int i = 0;
+  i = 0;
   while (i < NoF) {
     gif[i] = loadImage("frame_"+i+"_delay-0.1s.gif");
     i=i+1;

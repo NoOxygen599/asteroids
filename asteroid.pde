@@ -1,6 +1,7 @@
 class Asteroid extends GameObject {
   
-  float rotSpeed, angle;
+  float rotInterval, rotCurrent, rotDirection;
+  int rotSpeed;
   
   Asteroid(float x, float y, int l) {
     super(x, y, 1, 2);
@@ -8,8 +9,15 @@ class Asteroid extends GameObject {
     vel.rotate(random(TWO_PI));
     lives = l;
     d = lives*40;
-    rotSpeed = random(-2, 2);
-    angle = 0; 
+    
+    rotSpeed = (int)random(1, 10);
+    rotInterval = PI/36;
+    if (random(0,1) < 0.5){
+      rotDirection = 1; 
+    } else {
+      rotDirection = -1;
+    }
+    rotCurrent = 0;
   }
   
     Asteroid() {
@@ -18,17 +26,34 @@ class Asteroid extends GameObject {
     vel.rotate(random(TWO_PI));
     lives = 3;
     d = lives*40;
-    rotSpeed = random(-2, 2);
-    angle = 0; 
+
+    rotSpeed = (int)random(1, 10);
+    rotInterval = PI/180;
+    if (random(0,1) < 0.5){
+      rotDirection = 1; 
+    } else {
+      rotDirection = -1;
+    }
+    rotCurrent = 0;
   }
  
   
   void show() {
+    pushMatrix();
+    translate(loc.x, loc.y);
     fill(BLACK);
     stroke(WHITE);
     strokeWeight(2);
-    circle(loc.x, loc.y, d);
-    line(loc.x, loc.y, loc.x+lives*40/2, loc.y);
+    print("rotCurrent:"+rotCurrent+", ");
+    print("rotSpeed:"+rotSpeed+", ");
+    print("rotInterval"+rotInterval+"\n");
+    if ( mode != PAUSE && frameCount % rotSpeed == 0 ){
+      rotCurrent = rotCurrent + (rotInterval * rotDirection);
+    }
+    rotate(rotCurrent);
+    circle(0, 0, d);
+    line(0, 0, d/2, 0);
+    popMatrix();
   }
   
   void act() {

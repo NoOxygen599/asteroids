@@ -6,14 +6,14 @@ class Spaceship extends GameObject{
   PVector dir; //direction
   final int MAXSPEED = 15;
   final float MINSPEED = 0.01;
-  //final int MINFRAMES;
- 
-  
+  final int MINFRAMES = 10;
+  int lastShot; 
   
   //constructor
   Spaceship() {
     super(width/2, height/2, 0 ,0);
     dir = new PVector(0.1, 0);
+    lastShot = 0;
   }
   
   //behaviour functions
@@ -60,7 +60,12 @@ class Spaceship extends GameObject{
 
   }
   void shoot() {
-    if (spacekey) objects.add(new Bullet() );
+    if (spacekey){
+      if (frameCount >= lastShot + MINFRAMES){
+        objects.add(new Bullet() );
+        lastShot = frameCount;
+      }
+    }
   }
   void checkForCollisions() {
    
