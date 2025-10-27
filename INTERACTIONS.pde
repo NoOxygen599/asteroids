@@ -4,12 +4,12 @@ void mouseReleased() {
   else if (mode == PAUSE) pauseClicks();
   else if (mode == GAMEOVER) gameOverClicks();
   
-  
   if (mode == INTRO && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > 350 && mouseY < 450) {
-      mode = GAME;
+    mode = GAME;
+    gameStartFrame = frameCount;
   }
   if (mode == GAMEOVER && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > 350 && mouseY < 450) {
-      mode = INTRO;
+    mode = INTRO;
   }
 }
 
@@ -23,7 +23,6 @@ void keyPressed() {
   if (keyCode == 'Z') zkey = true;
 }
 
-
 void keyReleased() {
   if (keyCode == UP) upkey = false;
   if (keyCode == DOWN) downkey = false;
@@ -32,5 +31,4 @@ void keyReleased() {
   if (keyCode == ' ') spacekey = false;
   if (keyCode == 'z') zkey = false;
   if (keyCode == 'Z') zkey = false;
-  
 }

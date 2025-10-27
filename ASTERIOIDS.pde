@@ -1,18 +1,15 @@
 import java.util.ArrayList; 
 
-
-
 //gif
 PImage[] gif;
 int NoF;
 int f;
 
-
 //COLORS
-color BLACK = #000000;
-color WHITE = #FFFFFF;
-color RED   = #DD0000;
-
+final color BLACK = #000000;
+final color WHITE = #FFFFFF;
+final color RED   = #DD0000;
+final color GREY  = #8B8888;
 
 //MODE FRAMEWORK
 final int INTRO    = 0;
@@ -21,24 +18,18 @@ final int PAUSE    = 2;
 final int GAMEOVER = 3;
 int mode = GAMEOVER;
 
+int gameStartFrame = 0;
+
 //keys
 boolean upkey, downkey, leftkey, rightkey, spacekey, zkey;
 
-
 //Game Objects
 Spaceship player1;
+Ufo ufo1;
 
 //List of Bullets
 ArrayList<GameObject> objects;
 
-
-
-//pvectors
-PVector loc;
-PVector vel; 
-PVector gravity;
-
-float d;
 
 void setup() {
   size (800, 600);
@@ -54,9 +45,8 @@ void setup() {
     i++;
   }
   
-  
   //gif
-   NoF = 41;
+  NoF = 41;
   gif = new PImage[NoF];
  
   i = 0;
@@ -65,15 +55,10 @@ void setup() {
     i=i+1;
   }
   
-  
-  loc = new PVector(width/2, height/2);
-  vel = new PVector(random(-1,1), random(-1,1));
-  gravity = new PVector(0, 1);
-  d = 100;
 }
 
 void draw() {
-  print("fc:"+frameCount+"\n");
+  //print("fc:"+frameCount+"\n");
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
   //else if (mode == PAUSE) pause();

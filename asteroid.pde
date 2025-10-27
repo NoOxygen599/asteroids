@@ -20,7 +20,7 @@ class Asteroid extends GameObject {
     rotCurrent = 0;
   }
   
-    Asteroid() {
+  Asteroid() {
     super(random(width), random (height), 1, 2);
     vel.setMag(random(1, 3));
     vel.rotate(random(TWO_PI));
@@ -37,16 +37,13 @@ class Asteroid extends GameObject {
     rotCurrent = 0;
   }
  
-  
+   
   void show() {
     pushMatrix();
     translate(loc.x, loc.y);
     fill(BLACK);
     stroke(WHITE);
     strokeWeight(2);
-    print("rotCurrent:"+rotCurrent+", ");
-    print("rotSpeed:"+rotSpeed+", ");
-    print("rotInterval"+rotInterval+"\n");
     if ( mode != PAUSE && frameCount % rotSpeed == 0 ){
       rotCurrent = rotCurrent + (rotInterval * rotDirection);
     }
@@ -66,7 +63,7 @@ class Asteroid extends GameObject {
     int i = 0;
     while (i < objects.size()) {
       GameObject obj = objects.get(i);
-      if (obj instanceof Bullet) {
+      if (obj instanceof GoodBullet) {
         if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives > 0) {
           objects.add(new Asteroid(loc.x-random(20,50), loc.y+random(20,50), (int)(lives-1)));
           objects.add(new Asteroid(loc.x+random(20,80), loc.y-random(20,50), (int)(lives-1)));
