@@ -37,7 +37,9 @@ void setup() {
   rectMode(CENTER);
   objects = new ArrayList();
   player1 = new Spaceship();
+  ufo1 = new Ufo();
   objects.add(player1);
+  objects.add(ufo1);
   
   int i=0;
   while (i <= 6){
