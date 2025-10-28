@@ -17,6 +17,10 @@ void game() {
     
   }
  
+ 
+  textSize(53);
+  fill(WHITE);
+  text ("Lives "+GameObject.lives, 50, 100);
 }
 
 void gameClicks() {
