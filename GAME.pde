@@ -1,5 +1,6 @@
 void game() {
   background(0);
+  PFont font;
   
   int i = 0;
   while ( i < objects.size()) {
@@ -12,15 +13,21 @@ void game() {
     else
       i++;
   }
+  if (mode == GAME && player1.lives == 0) {
+    mode = GAMEOVER;
+  }
+  
   
   if ( (frameCount - gameStartFrame) % 2000 == 0){
     
   }
  
  
-  textSize(53);
-  fill(WHITE);
-  text ("Lives "+GameObject.lives, 50, 100);
+    textSize(10);
+    fill(WHITE);
+    font = loadFont ("OCRAExtended-43.vlw"); 
+    textFont(font); 
+    text ("Lives "+player1.lives, 120, 30);
 }
 
 void gameClicks() {

@@ -6,7 +6,7 @@ class Spaceship extends GameObject{
   PVector dir; //direction
   final int MAXSPEED = 15;
   final float MINSPEED = 0.01;
-  final int MINFRAMES = 15;
+  final int MINFRAMES = 25;
   int lastShot; 
   
   //constructor
@@ -74,21 +74,23 @@ class Spaceship extends GameObject{
     while (i < objects.size()) {
       GameObject obj = objects.get(i);
       if (obj instanceof EvilBullet) {
-        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives > 0) {
+        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + 2*obj.d) && lives > 0) {
           
           lives = lives - 1;
           obj.lives = 0; 
         }
       }
-        if (obj instanceof Asteroid) {
-        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives > 0) {
+       // if (obj instanceof Asteroid) {
+        //if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives > 0) {
           
-          lives = lives - 1; 
+          //lives = lives - 1; 
+          i++;
         }
        }
-     }
-      i++;
-    }
+       
+     //}
+      
+    //}
     
     
 

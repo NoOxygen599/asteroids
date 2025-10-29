@@ -1,5 +1,5 @@
-class Partical{
-  
+class Partical //extends GameObject
+  {
  void particals() {
     
   }

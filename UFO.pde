@@ -8,7 +8,7 @@ class Ufo extends GameObject {
   
   
     Ufo() {
-      super(30, random (height), 1, 2);
+      super(30, random (height-100), 1, 2);
       vel.setMag(random(1, 3));
       lives = 1;
        lastShot = 0;
