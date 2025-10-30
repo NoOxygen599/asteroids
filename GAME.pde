@@ -15,6 +15,10 @@ void game() {
   }
   if (mode == GAME && player1.lives == 0) {
     mode = GAMEOVER;
+    player1.lives = 3;
+    player1.loc.x = width/2;
+    player1.loc.y = height/2; 
+    
   }
   
   
@@ -23,11 +27,11 @@ void game() {
   }
  
  
-    textSize(10);
+    textSize(15);
     fill(WHITE);
     font = loadFont ("OCRAExtended-43.vlw"); 
     textFont(font); 
-    text ("Lives "+player1.lives, 120, 30);
+    text ("Lives "+player1.lives, 100, 30);
 }
 
 void gameClicks() {

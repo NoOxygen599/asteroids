@@ -26,6 +26,7 @@ boolean upkey, downkey, leftkey, rightkey, spacekey, zkey;
 //Game Objects
 Spaceship player1;
 Ufo ufo1;
+Partical p1;
 
 //List of Bullets
 ArrayList<GameObject> objects;
@@ -38,8 +39,10 @@ void setup() {
   objects = new ArrayList();
   player1 = new Spaceship();
   ufo1 = new Ufo();
+  p1 = new Partical(width/3, height/3, 1, 5, RED, 2000);
   objects.add(player1);
   objects.add(ufo1);
+  objects.add(p1);
   
   int i=0;
   while (i <= 6){

@@ -40,6 +40,12 @@ class Spaceship extends GameObject{
     wall();
     checkForCollisions();
   }
+  
+  void rocketPart() {
+   println("locx=" + loc.x +",locy=" + loc.y + ",dirx=" + dir.x + ",diry=" + dir.y );
+    objects.add(new Partical((loc.x - dir.x) - 12, (loc.y - dir.y), random(-1,1), random(-3,4), RED, 20));
+    
+  }
 
   void move() {
     loc. add(vel);
@@ -50,6 +56,7 @@ class Spaceship extends GameObject{
       if (vel.x < -MAXSPEED) vel.x = -MAXSPEED;
       if (vel.y > MAXSPEED)  vel.y =  MAXSPEED;
       if (vel.y < -MAXSPEED) vel.y = -MAXSPEED;
+      rocketPart();
     } else {
       vel.mult(0.985); 
       if (abs(vel.x) < MINSPEED){  vel.x = 0;}; 
@@ -59,8 +66,8 @@ class Spaceship extends GameObject{
     if (rightkey) dir.rotate(radians(5));
     if (leftkey) dir.rotate(-radians(5));
     //print(vel + "\n"); 
-
   }
+
   void shoot() {
     if (spacekey){
       if (frameCount >= lastShot + MINFRAMES){
@@ -69,30 +76,27 @@ class Spaceship extends GameObject{
       }
     }
   }
+
   void checkForCollisions() {
     int i = 0;
     while (i < objects.size()) {
       GameObject obj = objects.get(i);
       if (obj instanceof EvilBullet) {
         if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + 2*obj.d) && lives > 0) {
-          
           lives = lives - 1;
           obj.lives = 0; 
         }
       }
-       // if (obj instanceof Asteroid) {
+      // if (obj instanceof Asteroid) {
         //if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives > 0) {
           
           //lives = lives - 1; 
           i++;
         }
-       }
-       
+  }
+         
      //}
       
     //}
-    
-    
-
-  
+     
 }
