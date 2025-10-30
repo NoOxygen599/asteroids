@@ -21,11 +21,11 @@ class Asteroid extends GameObject {
   }
   
   Asteroid() {
-    super(random(width), random (height), 1, 2);
-    vel.setMag(random(0.5, 1));
+    super(random(width), random(height), 1, 2);
+    vel.setMag(random(0.25, 1.5));
     vel.rotate(random(TWO_PI));
     lives = 3;
-    d = lives*40;
+    d = 105;
 
     rotSpeed = (int)random(1, 10);
     rotInterval = PI/180;

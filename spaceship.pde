@@ -4,7 +4,7 @@ class Spaceship extends GameObject{
  // PVector loc; 
  // PVector vel; 
   PVector dir; //direction
-  final int MAXSPEED = 15;
+  final int MAXSPEED = 10;
   final float MINSPEED = 0.01;
   final int MINFRAMES = 25;
   int lastShot; 
@@ -23,7 +23,6 @@ class Spaceship extends GameObject{
     translate(loc.x, loc.y);
     rotate(dir.heading());
     drawShip();
-
     popMatrix();
   }
   
@@ -42,9 +41,28 @@ class Spaceship extends GameObject{
   }
   
   void rocketPart() {
-   println("locx=" + loc.x +",locy=" + loc.y + ",dirx=" + dir.x + ",diry=" + dir.y );
-    objects.add(new Partical((loc.x - dir.x) - 12, (loc.y - dir.y), random(-1,1), random(-3,4), RED, 20));
-    
+    //println("locx=" + loc.x +",locy=" + loc.y + ",dirx=" + dir.x + ",diry=" + dir.y );
+    PVector oppositeDir, o1, o2, o3, pos;
+    oppositeDir = dir.copy();
+    oppositeDir.mult(-1);
+    pos = loc.copy();
+    pos.add(oppositeDir);
+
+    o1 = oppositeDir.copy();
+    o2 = oppositeDir.copy();
+    o3 = oppositeDir.copy();
+
+    o1.setMag(random(3,12));
+    o1.rotate(random(-PI/8,PI/8));
+    objects.add(new Partical(pos.x, pos.y, o1.x, o1.y, RED, (int)random(3,7)) );
+   
+    o2.setMag(random(3,12));
+    o2.rotate(random(-PI/8,PI/8));
+    objects.add(new Partical(pos.x, pos.y, o2.x, o2.y, YELLOW, (int)random(3,7)) );
+
+    o3.setMag(random(3,12));
+    o3.rotate(random(-PI/8,PI/8));
+    objects.add(new Partical(pos.x, pos.y, o3.x, o3.y, ORANGE, (int)random(3,7)) );
   }
 
   void move() {

@@ -6,10 +6,12 @@ int NoF;
 int f;
 
 //COLORS
-final color BLACK = #000000;
-final color WHITE = #FFFFFF;
-final color RED   = #DD0000;
-final color GREY  = #8B8888;
+final color BLACK  = #000000;
+final color WHITE  = #FFFFFF;
+final color RED    = #DD0000;
+final color GREY   = #8B8888;
+final color YELLOW = #FFF40F;
+final color ORANGE = #FF980F;
 
 //MODE FRAMEWORK
 final int INTRO    = 0;
@@ -40,7 +42,7 @@ void setup() {
   player1 = new Spaceship();
   ufo1 = new Ufo();
   p1 = new Partical(width/3, height/3, 1, 5, RED, 2000);
-  objects.add(player1);
+  //objects.add(player1);
   objects.add(ufo1);
   objects.add(p1);
   
@@ -50,7 +52,7 @@ void setup() {
     i++;
   }
   
-  //gif
+  //pause gif
   NoF = 41;
   gif = new PImage[NoF];
  
@@ -63,7 +65,7 @@ void setup() {
 }
 
 void draw() {
-  print("fc:"+frameCount+"\n");
+  //print("fc:"+frameCount+"\n");
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
   //else if (mode == PAUSE) pause();

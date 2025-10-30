@@ -55,8 +55,8 @@ class Ufo extends GameObject {
       }
     }
     */
-    if (frameCount % 400 == 0){
-      objects.add(new EvilBullet());
+    if (frameCount % 200 == 0){
+      //objects.add(new EvilBullet());
     }
   }
   
