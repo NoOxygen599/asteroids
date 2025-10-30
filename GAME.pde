@@ -32,7 +32,7 @@ void game() {
   textFont( loadFont("OCRAExtended-43.vlw") ); 
   textSize(25);
   fill(YELLOW);
-  text("Lives "+player1.lives, 35, 20);
+  text("Lives "+player1.lives, 70, 20);
   pop();
 }
 

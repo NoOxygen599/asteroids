@@ -52,17 +52,17 @@ class Spaceship extends GameObject{
     o2 = oppositeDir.copy();
     o3 = oppositeDir.copy();
 
-    o1.setMag(random(3,12));
-    o1.rotate(random(-PI/8,PI/8));
-    objects.add(new Partical(pos.x, pos.y, o1.x, o1.y, RED, (int)random(3,7)) );
+    o1.setMag(random(7,18));
+    o1.rotate(random(-PI/20,PI/20));
+    objects.add(new Partical(pos.x, pos.y, o1.x, o1.y, RED, (int)random(5,12)) );
    
-    o2.setMag(random(3,12));
-    o2.rotate(random(-PI/8,PI/8));
-    objects.add(new Partical(pos.x, pos.y, o2.x, o2.y, YELLOW, (int)random(3,7)) );
+    o2.setMag(random(7,18));
+    o2.rotate(random(-PI/20,PI/20));
+    objects.add(new Partical(pos.x, pos.y, o2.x, o2.y, YELLOW, (int)random(5,12)) );
 
-    o3.setMag(random(3,12));
-    o3.rotate(random(-PI/8,PI/8));
-    objects.add(new Partical(pos.x, pos.y, o3.x, o3.y, ORANGE, (int)random(3,7)) );
+    o3.setMag(random(7,18));
+    o3.rotate(random(-PI/20,PI/20));
+    objects.add(new Partical(pos.x, pos.y, o3.x, o3.y, ORANGE, (int)random(5,12)) );
   }
 
   void move() {

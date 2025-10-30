@@ -48,13 +48,13 @@ class Ufo extends GameObject {
   }
     
   void shoot() {
- /*   if (spacekey) {
+    if (spacekey) {
       if (frameCount >= lastShot + MINFRAMES){
         objects.add(new EvilBullet());
         lastShot = frameCount;
       }
     }
-    */
+    
     if (frameCount % 200 == 0){
       //objects.add(new EvilBullet());
     }
