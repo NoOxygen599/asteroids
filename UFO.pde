@@ -1,18 +1,16 @@
 class Ufo extends GameObject {
-  
-  
-  
+    
   //instance variables
-   final int MINFRAMES = 30;
+  final int MINFRAMES = 30;
   int lastShot; 
   
   
-    Ufo() {
-      super(30, random (height-100), 1, 2);
-      vel.setMag(random(1, 3));
-      lives = 1;
-       lastShot = 0;
-    }
+  Ufo() {
+    super(30, random (height-100), 1, 2);
+    vel.setMag(random(1, 3));
+    lives = 1;
+    lastShot = 0;
+  }
  
   void show() {
     pushMatrix();
@@ -25,8 +23,14 @@ class Ufo extends GameObject {
   }
   
   void act() {
-    checkForCollisions();
-    shoot();
+    loc.add(vel);
+    if (loc.x >= width + 10){
+       lives = 0; 
+    }
+    else {
+      checkForCollisions();
+      shoot();
+    }
   }
  
   void checkForCollisions() {
@@ -42,15 +46,18 @@ class Ufo extends GameObject {
       i++;
     }
   }
-  
-  
+    
   void shoot() {
-    if (spacekey) {
-       if (frameCount >= lastShot + MINFRAMES){
+ /*   if (spacekey) {
+      if (frameCount >= lastShot + MINFRAMES){
         objects.add(new EvilBullet());
         lastShot = frameCount;
-       }
       }
     }
+    */
+    if (frameCount % 400 == 0){
+      objects.add(new EvilBullet());
+    }
+  }
   
 }

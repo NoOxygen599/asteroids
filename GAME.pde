@@ -2,16 +2,15 @@ void game() {
   background(0);
   PFont font;
   
-  int i = 0;
-  while ( i < objects.size()) {
+  int i = objects.size()-1;
+  while ( i >= 0 ) {
+    println("i:"+i+", size:"+objects.size());
     GameObject currentObject = objects.get(i);
     currentObject.act();
     currentObject.show(); 
     currentObject.wall();
-    if (currentObject.lives == 0) 
-      objects.remove(i);
-    else
-      i++;
+    if (currentObject.lives == 0) objects.remove(i);
+    i++;
   }
   if (mode == GAME && player1.lives == 0) {
     mode = GAMEOVER;

@@ -19,7 +19,7 @@ void intro() {
   text("START", width/2, 400);
 }
   //start
- // drawSquareButton (WHITE, BLACK, RED, width/4, height/2+100, 150, 75);
+ //drawSquareButton (WHITE, BLACK, RED, width/4, height/2+100, 150, 75);
   
   //Options
 
@@ -27,6 +27,6 @@ void intro() {
 void introClicks() {
   //if (buttonTouchesMouse(width/4, height/2+100, 150, 75)) {
    // mode = GAME;
- // }
+  //}
 }
  

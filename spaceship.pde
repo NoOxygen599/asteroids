@@ -37,7 +37,7 @@ class Spaceship extends GameObject{
   void act () {
     move();
     shoot();
-    wall();
+    //wall();
     checkForCollisions();
   }
   
@@ -87,16 +87,14 @@ class Spaceship extends GameObject{
           obj.lives = 0; 
         }
       }
-      // if (obj instanceof Asteroid) {
+      // else if (obj instanceof Asteroid) {
         //if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives > 0) {
           
           //lives = lives - 1; 
-          i++;
-        }
-  }
-         
-     //}
+        //}
+       i++;   
+    }
       
-    //}
+  }
      
 }

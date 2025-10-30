@@ -24,7 +24,7 @@ class Bullet extends GameObject{
     
   void act() {
     loc.add(vel);
-    print("ws:"+wrapsScreen+" lives:"+lives+"\n");
+    //print("ws:"+wrapsScreen+" lives:"+lives+"\n");
     wall(wrapsScreen);
     timer--;
     if (timer == 0) lives = 0;
@@ -39,6 +39,7 @@ class EvilBullet extends Bullet{
     cFill = RED;
     cStroke = RED;
     sWeight = 3;
+    println("player is:"+player1);
     vel = new PVector(player1.loc.x - ufo1.loc.x, player1.loc.y - ufo1.loc.y);
     vel.setMag(5);
     timer = 200;

@@ -1,16 +1,24 @@
 void mouseReleased() {
-  if (mode == INTRO) introClicks();
+  //println("MouseRelease:Mode:"+mode);
+  /*if (mode == INTRO) introClicks();
   else if (mode == GAME) gameClicks();
   else if (mode == PAUSE) pauseClicks();
   else if (mode == GAMEOVER) gameOverClicks();
+  */
   
-  if (mode == INTRO && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > 350 && mouseY < 450) {
-    mode = GAME;
-    gameStartFrame = frameCount;
+ //println("checking if button clicked, mouseX:"+mouseX+", MouseY:"+mouseY);
+  if (mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > 350 && mouseY < 450) {
+    if (mode == INTRO){
+      mode = GAME;
+      //println("set mode to GAME");
+      gameStartFrame = frameCount;
+    }
+    else if (mode == GAMEOVER){
+      mode = INTRO;
+      //println("set mode to INTRO");
+    }
   }
-  if (mode == GAMEOVER && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > 350 && mouseY < 450) {
-    mode = INTRO;
-  }
+  
 }
 
 void keyPressed() {

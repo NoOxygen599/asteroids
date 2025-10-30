@@ -5,7 +5,7 @@ class Asteroid extends GameObject {
   
   Asteroid(float x, float y, int l) {
     super(x, y, 1, 2);
-    vel.setMag(random(1, 1.5));
+    vel.setMag(random(1, 2));
     vel.rotate(random(TWO_PI));
     lives = l;
     d = lives*40;
@@ -39,6 +39,7 @@ class Asteroid extends GameObject {
  
    
   void show() {
+    //println("showing an asteroid");
     pushMatrix();
     translate(loc.x, loc.y);
     fill(BLACK);
@@ -55,7 +56,7 @@ class Asteroid extends GameObject {
   
   void act() {
     loc.add(vel);
-    wall();
+    //wall();
     checkForCollisions();
   }
   

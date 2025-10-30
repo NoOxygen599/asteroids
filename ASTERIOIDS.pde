@@ -28,7 +28,7 @@ Spaceship player1;
 Ufo ufo1;
 Partical p1;
 
-//List of Bullets
+//List of Game Objects
 ArrayList<GameObject> objects;
 
 
@@ -63,7 +63,7 @@ void setup() {
 }
 
 void draw() {
-  //print("fc:"+frameCount+"\n");
+  print("fc:"+frameCount+"\n");
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
   //else if (mode == PAUSE) pause();
