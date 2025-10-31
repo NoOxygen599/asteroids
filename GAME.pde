@@ -10,9 +10,11 @@ void game() {
     if (currentObject.lives == 0) objects.remove(i);
     i++;
   } 
-  
+ // player1.lives = 3 ; 
   if (mode == GAME && player1.lives == 0) {
     mode = GAMEOVER;
+    objects.add(player1);
+    //if(mode == GAMEOVER && player1.lives == 0) {
     player1 = new Spaceship();
     player1.loc.x = width/2;
     player1.loc.y = height/2; 
