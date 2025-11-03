@@ -1,20 +1,33 @@
 class Spaceship extends GameObject{
   
   // instance variables
- // PVector loc; 
- // PVector vel; 
+  // PVector loc; 
+  // PVector vel; 
   PVector dir; //direction
   final int MAXSPEED = 10;
   final float MINSPEED = 0.01;
   final int MINFRAMES = 25;
-  int lastShot; 
+  final int DEFAULTLIVES = 3;
+  final int INVINCIBLE_DURATION = 200;
+  int lastShot, invincibleTimer; 
   
   //constructor
+  Spaceship(float x, float y) {
+    super(x, y, 0, 0);
+    dir = new PVector(0, -0.1);
+    lives = DEFAULTLIVES;
+    lastShot = 0;
+    d = 20;
+    invincibleTimer = 0;
+  }
+  
   Spaceship() {
     super(width/2, height/2, 0 ,0);
     dir = new PVector(0.1, 0);
-    lives = 3;
+    lives = DEFAULTLIVES;
     lastShot = 0;
+    d = 20;
+    invincibleTimer = 0;
   }
   
   //behaviour functions
@@ -22,6 +35,9 @@ class Spaceship extends GameObject{
     pushMatrix();
     translate(loc.x, loc.y);
     rotate(dir.heading());
+    if ( invincibleTimer > 0 ){
+      drawShield(); 
+    }
     drawShip();
     popMatrix();
   }
@@ -33,6 +49,15 @@ class Spaceship extends GameObject{
     triangle(25, 0, -10, -10, -10, 10);
   }
   
+  void drawShield() {
+    pushMatrix();
+    strokeWeight(1);
+    stroke(LBLUE);
+    fill(BLACK, 0);
+    circle(4, 0, d+40);
+    popMatrix();
+  }
+  
   void act () {
     move();
     shoot();
@@ -42,27 +67,21 @@ class Spaceship extends GameObject{
   
   void rocketPart() {
     //println("locx=" + loc.x +",locy=" + loc.y + ",dirx=" + dir.x + ",diry=" + dir.y );
-    PVector oppositeDir, o1, o2, o3, pos;
+    PVector oppositeDir, pos;
+    color[] c = {RED, YELLOW, ORANGE};
+    
     oppositeDir = dir.copy();
     oppositeDir.mult(-1);
+    oppositeDir.setMag(random(7,20));
     pos = loc.copy();
     pos.add(oppositeDir);
-
-    o1 = oppositeDir.copy();
-    o2 = oppositeDir.copy();
-    o3 = oppositeDir.copy();
-
-    o1.setMag(random(7,18));
-    o1.rotate(random(-PI/20,PI/20));
-    objects.add(new Partical(pos.x, pos.y, o1.x, o1.y, RED, (int)random(5,12)) );
-   
-    o2.setMag(random(7,18));
-    o2.rotate(random(-PI/20,PI/20));
-    objects.add(new Partical(pos.x, pos.y, o2.x, o2.y, YELLOW, (int)random(5,12)) );
-
-    o3.setMag(random(7,18));
-    o3.rotate(random(-PI/20,PI/20));
-    objects.add(new Partical(pos.x, pos.y, o3.x, o3.y, ORANGE, (int)random(5,12)) );
+    
+    int i = 0;
+    while ( i < (int)random(1,40) ){
+      oppositeDir.rotate(random(-PI/20,PI/20));
+      objects.add(new Partical(pos.x+random(-7,7), pos.y+random(-7,7), oppositeDir.x, oppositeDir.y, c[(int)random(0,2)], (int)random(1,5)) );
+      i++;
+    }
   }
 
   void move() {
@@ -97,21 +116,26 @@ class Spaceship extends GameObject{
 
   void checkForCollisions() {
     int i = 0;
-    while (i < objects.size()) {
-      GameObject obj = objects.get(i);
-      if (obj instanceof EvilBullet) {
-        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + 2*obj.d) && lives > 0) {
-          lives = lives - 1;
-          obj.lives = 0; 
-        }
+    
+    if ( invincibleTimer == 0) {
+      while (i < objects.size()) {
+        GameObject obj = objects.get(i);
+        if (obj instanceof EvilBullet) {
+          if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives > 0) {
+            lives = lives - 1;
+            invincibleTimer = INVINCIBLE_DURATION;
+            obj.lives = 0; 
+          }
+        } else if (obj instanceof Asteroid) {
+          if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 +  obj.d/2) && lives > 0) {
+            lives = lives - 1; 
+            invincibleTimer = INVINCIBLE_DURATION;
+          }
+         }
+         i++;   
       }
-       else if (obj instanceof Asteroid) {
-        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (2*d +  obj.d/2) && lives > 0) {
-          
-          lives = lives - 1; 
-        }
-       }
-       i++;   
+    } else {
+      invincibleTimer--;
     }
       
   }

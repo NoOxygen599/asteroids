@@ -12,6 +12,7 @@ final color RED    = #DD0000;
 final color GREY   = #8B8888;
 final color YELLOW = #FFF40F;
 final color ORANGE = #FF980F;
+final color LBLUE  = #0ADAFC; 
 
 //MODE FRAMEWORK
 final int INTRO    = 0;
@@ -27,7 +28,6 @@ boolean upkey, downkey, leftkey, rightkey, spacekey, zkey;
 
 //Game Objects
 Spaceship player1;
-Ufo ufo1;
 Partical p1;
 
 //List of Game Objects
@@ -38,25 +38,14 @@ void setup() {
   size (800, 600);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
-  objects = new ArrayList();
-  player1 = new Spaceship();
-  ufo1 = new Ufo();
-  p1 = new Partical(width/3, height/3, 1, 5, RED, 2000);
-  //objects.add(player1);
-  objects.add(ufo1);
-  objects.add(p1);
   
-  int i=0;
-  while (i <= 6){
-    objects.add(new Asteroid());
-    i++;
-  }
+  restartGame();
   
-  //pause gif
+  //Create pause gif
   NoF = 41;
   gif = new PImage[NoF];
  
-  i = 0;
+  int i = 0;
   while (i < NoF) {
     gif[i] = loadImage("frame_"+i+"_delay-0.1s.gif");
     i=i+1;

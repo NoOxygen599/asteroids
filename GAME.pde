@@ -10,23 +10,14 @@ void game() {
     if (currentObject.lives == 0) objects.remove(i);
     i++;
   } 
- // player1.lives = 3 ; 
+ 
   if (mode == GAME && player1.lives == 0) {
     mode = GAMEOVER;
-    objects.add(player1);
-    //if(mode == GAMEOVER && player1.lives == 0) {
-    player1 = new Spaceship();
-    player1.loc.x = width/2;
-    player1.loc.y = height/2; 
-  } else {
-    player1.act();
-    player1.show();
-    player1.wall();
   }
-  
-  
-  if ( (frameCount - gameStartFrame) % 2000 == 0){
     
+  // Create the UFO every 2000 frames
+  if ( (frameCount - gameStartFrame) % 1000 == 0){
+    objects.add( new Ufo() );
   }
  
   // Show lives
@@ -36,6 +27,7 @@ void game() {
   fill(YELLOW);
   text("Lives "+player1.lives, 70, 20);
   pop();
+  
 }
 
 void gameClicks() {

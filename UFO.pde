@@ -1,12 +1,15 @@
 class Ufo extends GameObject {
     
   //instance variables
-  final int MINFRAMES = 30;
+  final int MINFRAMES = 250;
   int lastShot; 
   
-  
   Ufo() {
-    super(30, random (height-100), 1, 2);
+    super(0, random(height/4, height/2), 1, 0);
+    if ( random(0,1) > 0.5 ){
+       loc.x = width;
+       vel.mult(-1);
+    }
     vel.setMag(random(1, 3));
     lives = 1;
     lastShot = 0;
@@ -23,8 +26,15 @@ class Ufo extends GameObject {
   }
   
   void act() {
+    
+    // change direction after #frames
+    if ( frameCount % 200 == 0 ){
+      vel.rotate( random(-PI/4, PI/4) );
+    }
     loc.add(vel);
-    if (loc.x >= width + 10){
+    
+    // Kill if we go off the screen
+    if (loc.x <= -10 || loc.x >= width + 10){
        lives = 0; 
     }
     else {
@@ -48,15 +58,11 @@ class Ufo extends GameObject {
   }
     
   void shoot() {
-    if (spacekey) {
-      if (frameCount >= lastShot + MINFRAMES){
-        objects.add(new EvilBullet());
-        lastShot = frameCount;
-      }
-    }
-    
-    if (frameCount % 200 == 0){
-      //objects.add(new EvilBullet());
+    if (frameCount >= lastShot + MINFRAMES){
+      PVector v = new PVector(player1.loc.x - loc.x, player1.loc.y - loc.y);
+      v.setMag(5);
+      objects.add(new EvilBullet(loc.copy(), v));    
+      lastShot = frameCount;
     }
   }
   

@@ -14,8 +14,8 @@ void mouseReleased() {
       gameStartFrame = frameCount;
     }
     else if (mode == GAMEOVER){
-      mode = INTRO;
-      //println("set mode to INTRO");
+      mode = GAME;
+      restartGame();
     }
   }
   

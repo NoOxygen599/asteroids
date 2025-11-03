@@ -5,8 +5,8 @@ class Bullet extends GameObject{
   color cFill, cStroke;
   int sWeight;
   
-  Bullet(PVector x, PVector y, boolean cha, boolean ws) {
-    super(x,y);
+  Bullet(PVector l, PVector v, boolean cha, boolean ws) {
+    super(l,v);
     
     canHitAsteroid = cha;
     wrapsScreen = ws;
@@ -24,7 +24,6 @@ class Bullet extends GameObject{
     
   void act() {
     loc.add(vel);
-    print("ws:"+wrapsScreen+" lives:"+lives+"\n");
     wall(wrapsScreen);
     timer--;
     if (timer == 0) lives = 0;
@@ -34,15 +33,33 @@ class Bullet extends GameObject{
 
 class EvilBullet extends Bullet{
   
-  EvilBullet(){ 
-    super(ufo1.loc.copy(), player1.dir.copy(), false, false);    
+  EvilBullet(PVector l, PVector v){ 
+    super(l, v, false, false);    
     cFill = RED;
     cStroke = RED;
     sWeight = 3;
-    vel = new PVector(player1.loc.x - ufo1.loc.x, player1.loc.y - ufo1.loc.y);
-    vel.setMag(5);
     timer = 200;
     d = 10;
+  }
+  
+  void act() {
+    checkForCollisions();
+    super.act();
+  }
+
+  void checkForCollisions() {
+    int i = 0;
+    while (i < objects.size()) {
+      GameObject obj = objects.get(i);
+      if (obj instanceof GoodBullet) {
+        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2)){
+          lives = 0;
+          obj.lives = 0; 
+          player1.lives++; 
+        }
+      } 
+      i++;
+    } 
   }
   
 }

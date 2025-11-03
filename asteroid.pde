@@ -5,7 +5,7 @@ class Asteroid extends GameObject {
   
   Asteroid(float x, float y, int l) {
     super(x, y, 1, 2);
-    vel.setMag(random(1, 1.5));
+    vel.setMag(random(0.5, 1));
     vel.rotate(random(TWO_PI));
     lives = l;
     d = lives*40;
@@ -59,16 +59,16 @@ class Asteroid extends GameObject {
     checkForCollisions();
   }
   
-  void checkForCollisions() {
+  void checkForCollisions() { 
     int i = 0;
     while (i < objects.size()) {
       GameObject obj = objects.get(i);
       if (obj instanceof GoodBullet) {
-        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/1.5) && lives > 0) {
+        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives >= 1) {  
           objects.add(new Asteroid(loc.x-random(20,50), loc.y+random(20,50), (int)(lives-1)));
           objects.add(new Asteroid(loc.x+random(20,80), loc.y-random(20,50), (int)(lives-1)));
-          //objects.add(new Asteroid());
           lives = 0;
+          // *** Draw Asteroid Particles here
           obj.lives = 0; 
         }
       } 
