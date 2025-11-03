@@ -4,9 +4,9 @@ class Spaceship extends GameObject{
   // PVector loc; 
   // PVector vel; 
   PVector dir; //direction
-  final int MAXSPEED = 10;
+  final int MAXSPEED = 7;
   final float MINSPEED = 0.01;
-  final int MINFRAMES = 25;
+  final int MINFRAMES = 15;
   final int DEFAULTLIVES = 3;
   final int INVINCIBLE_DURATION = 200;
   int lastShot, invincibleTimer; 
@@ -100,8 +100,8 @@ class Spaceship extends GameObject{
       if (abs(vel.y) < MINSPEED){  vel.y = 0;};
     }
     
-    if (rightkey) dir.rotate(radians(5));
-    if (leftkey) dir.rotate(-radians(5));
+    if (rightkey) dir.rotate(radians(7));
+    if (leftkey) dir.rotate(-radians(7));
     //print(vel + "\n"); 
   }
 

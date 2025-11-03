@@ -16,7 +16,7 @@ class Partical extends GameObject{
  void show() {
    pushMatrix();
    translate(loc.x, loc.y);
-   if ( lifetime <= startlifetime/4 ) alpha = (int)(alpha * 0.75);
+   if ( lifetime <= startlifetime/4 ) alpha = (int)(alpha * 0.60);
    fill(col, alpha);
    stroke(col, alpha);
    strokeWeight(0);
