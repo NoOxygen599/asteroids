@@ -7,6 +7,7 @@ void game() {
     currentObject.act();
     currentObject.show(); 
     currentObject.wall();
+    currentObject.warp();
     if (currentObject.lives == 0) objects.remove(i);
     i++;
   } 
@@ -22,12 +23,19 @@ void game() {
  
   // Show lives
   push();
+  fill(WHITE);
+  
   textFont( loadFont("OCRAExtended-43.vlw") ); 
   textSize(25);
-  fill(YELLOW);
   text("Lives "+player1.lives, 70, 20);
   pop();
   
+  push();
+  textFont( loadFont("OCRAExtended-43.vlw") ); 
+  fill(WHITE);
+   textSize(20); 
+  text ("Press 'Z' to Warp", 120, height - 30);;
+  pop();
 }
 
 void gameClicks() {

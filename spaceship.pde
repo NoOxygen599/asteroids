@@ -7,6 +7,7 @@ class Spaceship extends GameObject{
   final int MAXSPEED = 7;
   final float MINSPEED = 0.01;
   final int MINFRAMES = 15;
+  final int MINTP = 50;
   final int DEFAULTLIVES = 3;
   final int INVINCIBLE_DURATION = 200;
   int lastShot, invincibleTimer; 
@@ -113,6 +114,26 @@ class Spaceship extends GameObject{
       }
     }
   }
+
+
+void warp() {
+  
+  if (zkey) {
+    if (frameCount >= lastShot + MINTP){
+      loc.x = random(50, width - 50);
+      loc.y = random(50, height - 50);
+       lastShot = frameCount;
+    }
+  }
+
+}
+
+
+
+
+
+
+
 
   void checkForCollisions() {
     int i = 0;

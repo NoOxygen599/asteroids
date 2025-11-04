@@ -48,7 +48,7 @@ class Ufo extends GameObject {
     while (i < objects.size()) {
       GameObject obj = objects.get(i);
       if (obj instanceof GoodBullet) {
-        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d)){
+        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + 20*obj.d)){
           lives = 0;
           obj.lives = 0; 
         }
