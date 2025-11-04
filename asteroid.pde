@@ -65,18 +65,13 @@ class Asteroid extends GameObject {
       GameObject obj = objects.get(i);
       if (obj instanceof GoodBullet) {
         if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives >= 1) {
-          objects.add(new Asteroid(loc.x-random(20, 50), loc.y+random(20, 50), (int)(lives-1)));
-          objects.add(new Asteroid(loc.x+random(20, 80), loc.y-random(20, 50), (int)(lives-1)));
+          objects.add(new Asteroid(loc.x+random(-d/2, d/2), loc.y+random(-d/2, d/2), (int)(lives-1)));
+          objects.add(new Asteroid(loc.x+random(-d/2, d/2), loc.y+random(-d/2, d/2), (int)(lives-1)));
           lives = 0;
           // *** Draw Asteroid Particles here
           obj.lives = 0;
         }
-      } //else if (obj instanceof Asteroid) {
-        //if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 +  obj.d/2)) {
-         // vel.x = loc.x - obj.loc.x;
-          //vel.y = loc.y - obj.loc.y;
-        //}
-     // }
+      }
       i++;
     }
   }
