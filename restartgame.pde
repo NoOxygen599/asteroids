@@ -2,6 +2,7 @@ void restartGame() {
   objects = new ArrayList();
   player1 = new Spaceship();
   objects.add(player1);
+  
  
   // Create Asteroids
   int i=0;

@@ -1,29 +1,30 @@
-class Partical extends GameObject{
+class Particle extends GameObject{
   
   color col; 
   int lifetime, startlifetime, alpha; 
   float size;
   
-  Partical(float x, float y, float vx, float vy, color c, int l) {
+  Particle(float x, float y, float vx, float vy, color c, float s, int l) {
    super(x, y, vx, vy);
    col = c;
    lifetime = l;
    startlifetime = l;
-   size = (random(1,3));
+   size = s;
    alpha = 255;
   }
   
  void show() {
    pushMatrix();
    translate(loc.x, loc.y);
-   if ( lifetime <= startlifetime/4 ) alpha = (int)(alpha * 0.60);
+   //alpha = alpha + (255/startlifetime);
+   if ( lifetime <= startlifetime/4 ) alpha = (int)(alpha * 0.6);
    fill(col, alpha);
    stroke(col, alpha);
    strokeWeight(0);
    square(0, 0, size);
    popMatrix();
-  }
- 
+ }
+   
  void act() {
     loc.add(vel);
     lifetime--;

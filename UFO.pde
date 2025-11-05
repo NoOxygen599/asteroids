@@ -13,6 +13,7 @@ class Ufo extends GameObject {
     vel.setMag(random(1, 3));
     lives = 1;
     lastShot = 0;
+    d = 21;
   }
  
   void show() {
@@ -48,9 +49,10 @@ class Ufo extends GameObject {
     while (i < objects.size()) {
       GameObject obj = objects.get(i);
       if (obj instanceof GoodBullet) {
-        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + 20*obj.d)){
+        if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2)){
           lives = 0;
           obj.lives = 0; 
+           explodes(200);
         }
       } 
       i++;

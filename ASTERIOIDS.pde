@@ -13,6 +13,7 @@ final color GREY   = #8B8888;
 final color YELLOW = #FFF40F;
 final color ORANGE = #FF980F;
 final color LBLUE  = #0ADAFC; 
+final color[] colors = {BLACK, WHITE, GREY, LBLUE};
 
 //MODE FRAMEWORK
 final int INTRO    = 0;
@@ -28,7 +29,6 @@ boolean upkey, downkey, leftkey, rightkey, spacekey, zkey;
 
 //Game Objects
 Spaceship player1;
-Partical p1;
 
 //List of Game Objects
 ArrayList<GameObject> objects;

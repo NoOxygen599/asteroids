@@ -27,12 +27,17 @@ class GameObject {
     
   }
   
-  void warp() {
+ 
+  void show() {
     
   }
   
-  void show() {
-    
+  void explodes(int ps){
+    int i = 0;
+    while (i < ps){
+      objects.add(new Particle(loc.x, loc.y, random(-3,3), random(-3,3), colors[(int)random(0,colors.length)], random(5,15), (int)random(5,50)));
+      i++;
+    }
   }
   
   

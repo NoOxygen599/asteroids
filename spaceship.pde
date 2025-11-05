@@ -7,10 +7,10 @@ class Spaceship extends GameObject{
   final int MAXSPEED = 7;
   final float MINSPEED = 0.01;
   final int MINFRAMES = 15;
-  final int MINTP = 50;
+  final int WARPTP = 150;
   final int DEFAULTLIVES = 3;
-  final int INVINCIBLE_DURATION = 200;
-  int lastShot, invincibleTimer; 
+  final int INVINCIBLE_DURATION = 150;
+  int lastShot, warpTimer, invincibleTimer; 
   
   //constructor
   Spaceship(float x, float y) {
@@ -18,6 +18,7 @@ class Spaceship extends GameObject{
     dir = new PVector(0, -0.1);
     lives = DEFAULTLIVES;
     lastShot = 0;
+    warpTimer = 0;
     d = 20;
     invincibleTimer = 0;
   }
@@ -27,6 +28,7 @@ class Spaceship extends GameObject{
     dir = new PVector(0.1, 0);
     lives = DEFAULTLIVES;
     lastShot = 0;
+    warpTimer = 0;
     d = 20;
     invincibleTimer = 0;
   }
@@ -52,8 +54,8 @@ class Spaceship extends GameObject{
   
   void drawShield() {
     pushMatrix();
-    strokeWeight(1);
-    stroke(LBLUE);
+    strokeWeight(4);
+    stroke(LBLUE, invincibleTimer*2);
     fill(BLACK, 0);
     circle(4, 0, d+40);
     popMatrix();
@@ -62,7 +64,7 @@ class Spaceship extends GameObject{
   void act () {
     move();
     shoot();
-    //wall();
+    warp();
     checkForCollisions();
   }
   
@@ -80,7 +82,7 @@ class Spaceship extends GameObject{
     int i = 0;
     while ( i < (int)random(1,40) ){
       oppositeDir.rotate(random(-PI/20,PI/20));
-      objects.add(new Partical(pos.x+random(-7,7), pos.y+random(-7,7), oppositeDir.x, oppositeDir.y, c[(int)random(0,2)], (int)random(1,5)) );
+      objects.add(new Particle(pos.x+random(-7,7), pos.y+random(-7,7), oppositeDir.x, oppositeDir.y, c[(int)random(0,2)], random(1,3), (int)random(1,5)) );
       i++;
     }
   }
@@ -116,24 +118,28 @@ class Spaceship extends GameObject{
   }
 
 
-void warp() {
+  void warp() {
   
-  if (zkey) {
-    if (frameCount >= lastShot + MINTP){
-      loc.x = random(50, width - 50);
-      loc.y = random(50, height - 50);
-       lastShot = frameCount;
+    if (zkey) {
+      if (warpTimer <= 0){
+        loc.x = random(50, width - 50);
+        loc.y = random(50, height - 50);
+        int i = 0;
+        while ( i < objects.size() ) {
+          GameObject currentObject = objects.get(i);
+          if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < (d/2 + currentObject.d/2 + 50)){
+            loc.x = random(50, width - 50);
+            loc.y = random(50, height - 50);
+            i = 0;
+          }
+          i++;
+        } 
+        warpTimer = WARPTP;
+      }
     }
+  
+    warpTimer--;
   }
-
-}
-
-
-
-
-
-
-
 
   void checkForCollisions() {
     int i = 0;

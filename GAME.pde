@@ -7,7 +7,6 @@ void game() {
     currentObject.act();
     currentObject.show(); 
     currentObject.wall();
-    currentObject.warp();
     if (currentObject.lives == 0) objects.remove(i);
     i++;
   } 
@@ -27,7 +26,7 @@ void game() {
   
   textFont( loadFont("OCRAExtended-43.vlw") ); 
   textSize(25);
-  text("Lives "+player1.lives, 70, 20);
+  text("Lives "+player1.lives, 80, 20);
   pop();
   
   push();

@@ -56,6 +56,7 @@ class EvilBullet extends Bullet{
           lives = 0;
           obj.lives = 0; 
           player1.lives++; 
+          explodes(30);
         }
       } 
       i++;
@@ -68,7 +69,7 @@ class GoodBullet extends Bullet{
   
   GoodBullet(){
     super(player1.loc.copy(), player1.dir.copy(), true, true);
-    cFill = BLACK;
+    cFill = LBLUE;
     cStroke = WHITE;
     sWeight = 2;
     vel.setMag(player1.vel.mag() + 8);
