@@ -32,10 +32,10 @@ class GameObject {
     
   }
   
-  void explodes(int ps){
+  void explodes(int ps, int cs, int ce, int sm, int ms){
     int i = 0;
     while (i < ps){
-      objects.add(new Particle(loc.x, loc.y, random(-3,3), random(-3,3), colors[(int)random(0,colors.length)], random(5,15), (int)random(5,50)));
+      objects.add(new Particle(loc.x, loc.y, random(-3,3), random(-3,3), colors[(int)random(cs, ce)], random(sm,ms), (int)random(5,50)));
       i++;
     }
   }

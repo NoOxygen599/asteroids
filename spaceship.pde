@@ -132,9 +132,10 @@ class Spaceship extends GameObject{
             loc.y = random(50, height - 50);
             i = 0;
           }
-          i++;
+          i++; 
         } 
         warpTimer = WARPTP;
+          explodes(90, 3, 4, 3, 9);
       }
     }
   
@@ -152,11 +153,13 @@ class Spaceship extends GameObject{
             lives = lives - 1;
             invincibleTimer = INVINCIBLE_DURATION;
             obj.lives = 0; 
+            explodes(40, 3, 6, 5, 13);
           }
         } else if (obj instanceof Asteroid) {
           if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 +  obj.d/2) && lives > 0) {
             lives = lives - 1; 
             invincibleTimer = INVINCIBLE_DURATION;
+            explodes(30, 2, 4, 5, 10);
           }
          }
          i++;   

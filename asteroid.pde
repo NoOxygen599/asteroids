@@ -68,7 +68,7 @@ class Asteroid extends GameObject {
           objects.add(new Asteroid(loc.x+random(-d/2, d/2), loc.y+random(-d/2, d/2), (int)(lives-1)));
           objects.add(new Asteroid(loc.x+random(-d/2, d/2), loc.y+random(-d/2, d/2), (int)(lives-1)));
           lives = 0;
-          obj.explodes(50);
+          obj.explodes(50, 0 ,3, 5, 18);
           // *** Draw Asteroid Particles here
           obj.lives = 0;
         }

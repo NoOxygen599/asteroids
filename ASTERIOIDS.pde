@@ -13,7 +13,7 @@ final color GREY   = #8B8888;
 final color YELLOW = #FFF40F;
 final color ORANGE = #FF980F;
 final color LBLUE  = #0ADAFC; 
-final color[] colors = {BLACK, WHITE, GREY, LBLUE};
+final color[] colors = {BLACK, WHITE, GREY, LBLUE, RED, ORANGE};
 
 //MODE FRAMEWORK
 final int INTRO    = 0;
