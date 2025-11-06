@@ -31,10 +31,23 @@ void game() {
   
   push();
   textFont( loadFont("OCRAExtended-43.vlw") ); 
-  fill(WHITE);
-   textSize(20); 
+  fill(WHITE,255);
+  textSize(20); 
   text ("Press 'Z' to Warp", 120, height - 30);;
   pop();
+  pushMatrix();
+  noStroke();
+  fill(RED);
+  float cd = 25.0*((float)(player1.WARPTP-player1.warpTimer)/(float)player1.WARPTP);
+  if (cd >= 25) fill(LBLUE);
+  circle(200, height-30, cd);
+  stroke(WHITE,255);
+  strokeWeight(2);
+  fill(BLACK,0);
+  circle(200, height-30, 25);
+  popMatrix();
+  
+  
 }
 
 void gameClicks() {

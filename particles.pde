@@ -16,8 +16,8 @@ class Particle extends GameObject{
  void show() {
    pushMatrix();
    translate(loc.x, loc.y);
-   //alpha = alpha + (255/startlifetime);
-   if ( lifetime <= startlifetime/4 ) alpha = (int)(alpha * 0.6);
+   if (lifetime <= startlifetime/2) alpha = alpha - (255/startlifetime);
+   //if ( lifetime <= startlifetime/2 ) alpha = (int)(alpha * 0.6);
    fill(col, alpha);
    stroke(col, alpha);
    strokeWeight(0);
