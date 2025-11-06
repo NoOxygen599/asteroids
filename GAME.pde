@@ -40,11 +40,11 @@ void game() {
   fill(RED);
   float cd = 25.0*((float)(player1.WARPTP-player1.warpTimer)/(float)player1.WARPTP);
   if (cd >= 25) fill(LBLUE);
-  circle(200, height-30, cd);
+  circle(240, height-30, cd);
   stroke(WHITE,255);
   strokeWeight(2);
   fill(BLACK,0);
-  circle(200, height-30, 25);
+  circle(240, height-30, 25);
   popMatrix();
   
   

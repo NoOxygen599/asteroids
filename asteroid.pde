@@ -48,8 +48,17 @@ class Asteroid extends GameObject {
       rotCurrent = rotCurrent + (rotInterval * rotDirection);
     }
     rotate(rotCurrent);
+    line(-40, 15, -40, -15);
+    line(40, -15, 40, 15);
+    line(-40, 15, -15, 40); 
+    line(40, -15, 15, -40); 
+    line(-15, 40, 15, 40);
+    line(15, -40, -15, -40);
+    line(15, 40, 40, 15); 
+    line(-15, -40, -40, -15); 
+    fill(BLACK, 0); 
     circle(0, 0, d);
-    line(0, 0, d/2, 0);
+   // line(0, 0, d/2, 0);
     popMatrix();
   }
 

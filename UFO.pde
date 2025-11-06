@@ -13,7 +13,7 @@ class Ufo extends GameObject {
     vel.setMag(random(1, 3));
     lives = 1;
     lastShot = 0;
-    d = 21;
+    d = 40;
   }
  
   void show() {
@@ -22,7 +22,7 @@ class Ufo extends GameObject {
     fill(GREY);
     stroke(WHITE);
     strokeWeight(2);
-    square(0, 0, 20);
+    square(0, 0, 37);
     popMatrix();
   }
   
