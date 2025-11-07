@@ -1,8 +1,8 @@
 import java.util.ArrayList; 
 
-//gif
+//animated gif
 PImage[] gif;
-int NoF;
+int noF;
 int f;
 
 //COLORS
@@ -42,11 +42,11 @@ void setup() {
   restartGame();
   
   //Create pause gif
-  NoF = 41;
-  gif = new PImage[NoF];
+  noF = 41;
+  gif = new PImage[noF];
  
   int i = 0;
-  while (i < NoF) {
+  while (i < noF) {
     gif[i] = loadImage("frame_"+i+"_delay-0.1s.gif");
     i=i+1;
   }

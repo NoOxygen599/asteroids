@@ -19,7 +19,7 @@ class Spaceship extends GameObject{
     lives = DEFAULTLIVES;
     lastShot = 0;
     warpTimer = 0;
-    d = 20;
+    d = 30;
     invincibleTimer = 0;
   }
   
@@ -49,7 +49,7 @@ class Spaceship extends GameObject{
     fill(BLACK);
     stroke(WHITE);
     strokeWeight(4); 
-    triangle(25, 0, -10, -10, -10, 10);
+    triangle(15, 0, -15, -10, -15, 10);
   }
   
   void drawShield() {
