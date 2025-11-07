@@ -1,7 +1,7 @@
 class Ufo extends GameObject {
     
   //instance variables
-  final int MINFRAMES = 250;
+  final int MINFRAMES = 160;
   int lastShot; 
   
   Ufo() {
@@ -10,10 +10,10 @@ class Ufo extends GameObject {
        loc.x = width;
        vel.mult(-1);
     }
-    vel.setMag(random(1, 3));
+    vel.setMag(random(2, 5));
     lives = 1;
     lastShot = 0;
-    d = 40;
+    d = 45;
   }
  
   void show() {
@@ -63,7 +63,7 @@ class Ufo extends GameObject {
   void shoot() {
     if (frameCount >= lastShot + MINFRAMES){
       PVector v = new PVector(player1.loc.x - loc.x, player1.loc.y - loc.y);
-      v.setMag(5);
+      v.setMag(6.7);
       objects.add(new EvilBullet(loc.copy(), v));    
       lastShot = frameCount;
     }

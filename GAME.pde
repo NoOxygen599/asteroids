@@ -30,7 +30,7 @@ void game() {
   }
     
   // Create the UFO every 2000 frames
-  if ( (frameCount - gameStartFrame) % 1000 == 0){
+  if ( (frameCount - gameStartFrame) % 700 == 0){
     objects.add( new Ufo() );
   }
  

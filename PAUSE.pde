@@ -8,7 +8,10 @@ void pause() {
   while ( i < objects.size()) {
     GameObject currentObject = objects.get(i);
     currentObject.show(); 
-    i++;
+   if (currentObject.lives == 0) 
+      objects.remove(i);
+   else
+      i++;
   }
 }
 
