@@ -1,10 +1,5 @@
-void restartGame() {
-  objects = new ArrayList();
-  player1 = new Spaceship();
-  objects.add(player1);
-  
- 
-  // Create Asteroids
+void resetAsteroids(){
+   // Create Asteroids
   int i=0;
   while (i <= 6){
     Asteroid a = new Asteroid();
@@ -13,6 +8,15 @@ void restartGame() {
     }
     objects.add(a);
     i++;
-  }
+  } 
+}
+
+void restartGame() {
+  score = 0;
   
+  objects = new ArrayList();
+  player1 = new Spaceship();
+  objects.add(player1);
+  
+  resetAsteroids();
 }

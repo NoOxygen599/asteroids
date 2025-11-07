@@ -2,14 +2,28 @@ void game() {
   background(0);
   
   int i = 0;
+  boolean a = false;
+  
   while ( i < objects.size() ) {
     GameObject currentObject = objects.get(i);
     currentObject.act();
-    currentObject.show(); 
-    currentObject.wall();
-    if (currentObject.lives == 0) objects.remove(i);
+
+    if (currentObject instanceof Asteroid){
+      a = true;
+    }
+    
+    if (currentObject.lives == 0){
+      objects.remove(i);
+    } else {
+      currentObject.show();
+      currentObject.wall();
+    }
     i++;
   } 
+
+  if (a == false){
+    resetAsteroids();
+  }
  
   if (mode == GAME && player1.lives == 0) {
     mode = GAMEOVER;
@@ -25,16 +39,18 @@ void game() {
   fill(WHITE);
   
   textFont( loadFont("OCRAExtended-43.vlw") ); 
-  textSize(25);
-  text("Lives "+player1.lives, 80, 20);
+  textSize(20);
+  text("Lives: "+player1.lives, 80, 20);
+  text ("Score: "+score, width-80, 20);  
   pop();
   
   push();
   textFont( loadFont("OCRAExtended-43.vlw") ); 
   fill(WHITE,255);
   textSize(20); 
-  text ("Press 'Z' to Warp", 120, height - 30);;
+  text ("Press 'Z' to Warp", 120, height - 30);
   pop();
+  
   pushMatrix();
   noStroke();
   fill(RED);

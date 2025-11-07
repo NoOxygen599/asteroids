@@ -52,7 +52,8 @@ class Ufo extends GameObject {
         if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2)){
           lives = 0;
           obj.lives = 0; 
-           explodes(200, 0, 4, 3, 15);
+          explodes(200, 0, 4, 3, 15);
+          score = score + 500;
         }
       } 
       i++;

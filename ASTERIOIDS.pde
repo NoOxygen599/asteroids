@@ -23,6 +23,8 @@ final int GAMEOVER = 3;
 int mode = INTRO;
 
 int gameStartFrame = 0;
+int score = 0;
+int highscore = 0;
 
 //keys
 boolean upkey, downkey, leftkey, rightkey, spacekey, zkey;
@@ -54,7 +56,6 @@ void setup() {
 }
 
 void draw() {
-  //print("fc:"+frameCount+"\n");
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
   //else if (mode == PAUSE) pause();

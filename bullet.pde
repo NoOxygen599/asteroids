@@ -57,6 +57,7 @@ class EvilBullet extends Bullet{
           obj.lives = 0; 
           player1.lives++; 
           explodes(70, 3, 6, 4, 13);
+          score = score + 750;
         }
       } 
       i++;

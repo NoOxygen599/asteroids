@@ -6,7 +6,7 @@ class Spaceship extends GameObject{
   PVector dir; //direction
   final int MAXSPEED = 7;
   final float MINSPEED = 0.01;
-  final int MINFRAMES = 15;
+  final int MINFRAMES = 17;
   final int WARPTP = 200;
   final int DEFAULTLIVES = 3;
   final int INVINCIBLE_DURATION = 150;
@@ -69,7 +69,6 @@ class Spaceship extends GameObject{
   }
   
   void rocketPart() {
-    //println("locx=" + loc.x +",locy=" + loc.y + ",dirx=" + dir.x + ",diry=" + dir.y );
     PVector oppositeDir, pos;
     color[] c = {RED, YELLOW, ORANGE};
     

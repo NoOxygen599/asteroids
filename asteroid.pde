@@ -48,14 +48,15 @@ class Asteroid extends GameObject {
       rotCurrent = rotCurrent + (rotInterval * rotDirection);
     }
     rotate(rotCurrent);
-    line(-40, 15, -40, -15);
-    line(40, -15, 40, 15);
-    line(-40, 15, -15, 40); 
-    line(40, -15, 15, -40); 
-    line(-15, 40, 15, 40);
-    line(15, -40, -15, -40);
-    line(15, 40, 40, 15); 
-    line(-15, -40, -40, -15); 
+    float l = d/120;
+    line(-40*l,  15*l, -40*l, -15*l);
+    line( 40*l, -15*l,  40*l,  15*l);
+    line(-40*l,  15*l, -15*l,  40*l); 
+    line( 40*l, -15*l,  15*l, -40*l); 
+    line(-15*l,  40*l,  15*l,  40*l);
+    line( 15*l, -40*l, -15*l, -40*l);
+    line( 15*l,  40*l,  40*l,  15*l); 
+    line(-15*l, -40*l, -40*l, -15*l); 
     fill(BLACK, 0); 
     circle(0, 0, d);
    // line(0, 0, d/2, 0);
@@ -64,7 +65,6 @@ class Asteroid extends GameObject {
 
   void act() {
     loc.add(vel);
-    wall();
     checkForCollisions();
   }
 
@@ -74,11 +74,17 @@ class Asteroid extends GameObject {
       GameObject obj = objects.get(i);
       if (obj instanceof GoodBullet) {
         if (dist(loc.x, loc.y, obj.loc.x, obj.loc.y) < (d/2 + obj.d/2) && lives >= 1) {
+          if (lives >= 2){
+            score = score + 100;
+          } else {
+            score = score + 150;
+          }
+          
           objects.add(new Asteroid(loc.x+random(-d/2, d/2), loc.y+random(-d/2, d/2), (int)(lives-1)));
           objects.add(new Asteroid(loc.x+random(-d/2, d/2), loc.y+random(-d/2, d/2), (int)(lives-1)));
           lives = 0;
+          // Draw explosion at bullet
           obj.explodes(50, 0 ,3, 5, 18);
-          // *** Draw Asteroid Particles here
           obj.lives = 0;
         }
       }
