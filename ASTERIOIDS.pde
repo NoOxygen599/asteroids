@@ -9,11 +9,13 @@ int f;
 final color BLACK  = #000000;
 final color WHITE  = #FFFFFF;
 final color RED    = #DD0000;
+final color HRED   = #FA5D5D; 
 final color GREY   = #8B8888;
 final color YELLOW = #FFF40F;
 final color ORANGE = #FF980F;
 final color LBLUE  = #0ADAFC; 
-final color[] colors = {BLACK, WHITE, GREY, LBLUE, RED, ORANGE};
+final color GREEN  = #28E305;
+final color[] colors = {BLACK, WHITE, GREY, LBLUE, RED, ORANGE, GREEN, GREY, HRED};
 
 //MODE FRAMEWORK
 final int INTRO    = 0;
@@ -28,6 +30,8 @@ int highscore = 0;
 
 //keys
 boolean upkey, downkey, leftkey, rightkey, spacekey, zkey;
+
+PImage hsimage;
 
 //Game Objects
 Spaceship player1;
@@ -53,6 +57,7 @@ void setup() {
     i=i+1;
   }
   
+  hsimage = loadImage("healthstation2.png");
 }
 
 void draw() {

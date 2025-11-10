@@ -5,7 +5,7 @@ class Ufo extends GameObject {
   int lastShot; 
   
   Ufo() {
-    super(0, random(height/4, height/2), 1, 0);
+    super(0, random(height*0.25, height*0.75), 1, 0);
     if ( random(0,1) > 0.5 ){
        loc.x = width;
        vel.mult(-1);

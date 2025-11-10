@@ -29,11 +29,16 @@ void game() {
     mode = GAMEOVER;
   }
     
-  // Create the UFO every 2000 frames
+  // Create the UFO every 
   if ( (frameCount - gameStartFrame) % 700 == 0){
     objects.add( new Ufo() );
   }
  
+  // Create the health station  
+ if ( (frameCount - gameStartFrame) % 1750 == 0){
+    objects.add( new Healstation() );
+  }
+  
   // Show lives
   push();
   fill(WHITE);
